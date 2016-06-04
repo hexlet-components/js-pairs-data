@@ -1,5 +1,5 @@
 {
-  "name": "hexlet-pairs",
+  "name": "hexlet-pairs-data",
   "version": "0.0.2",
   "description": "",
   "main": "dist/index.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hexlet-components/js-pairs.git"
+    "url": "git+https://github.com/hexlet-components/js-pairs-data.git"
   },
   "author": "Kirill Mokevnin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hexlet-components/js-pairs/issues"
+    "url": "https://github.com/hexlet-components/js-pairs-data/issues"
   },
-  "homepage": "https://github.com/hexlet-components/js-pairs#readme",
+  "homepage": "https://github.com/hexlet-components/js-pairs-data#readme",
   "dependencies": {
     "hexlet-pairs": "*"
   },
