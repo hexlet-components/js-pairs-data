@@ -8,6 +8,6 @@ test:
 	npm run test
 
 lint:
-	npm run eslint .
+	npm run eslint src
 
 .PHONY: test

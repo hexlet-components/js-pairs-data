@@ -24,6 +24,10 @@
     "hexlet-pairs": "*"
   },
   "devDependencies": {
+    "babel-eslint": "*",
+    "babel-plugin-syntax-flow": "*",
+    "babel-plugin-transform-flow-strip-types": "*",
+    "babel-plugin-typecheck": "*",
     "babel-core": "*",
     "babel-cli": "*",
     "babel-preset-es2015": "*",
