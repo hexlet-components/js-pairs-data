@@ -1,18 +1,20 @@
+// @flow
+
 import * as pairs from 'hexlet-pairs';
 
 export const cons = (element, list) => pairs.cons(element, list);
 
-export const l = (...elements) => {
-  return elements.reverse().reduce((acc, item) => {
-    return cons(item, acc);
-  }, null);
-};
+export const l = (...elements) =>
+  elements.reverse().reduce((acc, item) =>
+    cons(item, acc), null);
 
 export const head = (list) => pairs.car(list);
 
 export const tail = (list) => pairs.cdr(list);
 
 export const isEmpty = (list) => list === null;
+
+export const isList = (mix) => mix === null || pairs.isPair(mix);
 
 export const isEqual = (list1, list2) => {
   if (isEmpty(list1) && isEmpty(list2)) {

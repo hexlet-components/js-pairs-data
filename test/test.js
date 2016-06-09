@@ -7,6 +7,13 @@ describe('Data', () => {
     assert.equal(data.toString(numbers), '(3, 4, 5)');
   });
 
+  it('#isList', () => {
+    const numbers = data.l(3, 4, 5);
+    assert.ok(data.isList(numbers));
+    assert.ok(data.isList(data.l()));
+    assert.ok(!data.isList(5));
+  });
+
   it('#reverse', () => {
     const numbers = data.l(3, 4, 5);
     assert.equal(data.toString(data.reverse(numbers)), '(5, 4, 3)');
