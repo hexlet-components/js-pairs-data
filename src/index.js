@@ -99,6 +99,10 @@ export const toString = (list) => {
     return list;
   }
 
+  if (isEmpty(list)) {
+    return '()';
+  }
+
   const rec = (p) => {
     const first = head(p);
     const rest = tail(p);
