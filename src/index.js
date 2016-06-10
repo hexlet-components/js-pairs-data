@@ -1,5 +1,3 @@
-// @flow
-
 import * as pairs from 'hexlet-pairs';
 
 export const cons = (element, list) => pairs.cons(element, list);
@@ -96,5 +94,20 @@ export const s = (...elements) => {
   }, l());
 };
 
-export const toString = (seq) => pairs.toString(seq);
+export const toString = (list) => {
+  if (!isList(list)) {
+    return list;
+  }
 
+  const rec = (p) => {
+    const first = head(p);
+    const rest = tail(p);
+    if (isEmpty(rest)) {
+      return toString(first);
+    }
+
+    return `${toString(first)}, ${rec(rest)}`;
+  };
+
+  return `(${rec(list)})`;
+};
