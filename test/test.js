@@ -92,5 +92,11 @@ describe('Data', () => {
     const list = data.l(3, data.l(4, 5), data.l(10, data.l(3)), 5, 5);
     assert.equal(data.toString(list), '(3, (4, 5), (10, (3)), 5, 5)');
   });
+
+  it('#random', () => {
+    const numbers = data.s(3, 4, 3, 5, 5);
+    const randomNumber = data.random(numbers);
+    assert.ok(randomNumber);
+  });
 });
 

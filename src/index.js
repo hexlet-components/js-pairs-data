@@ -1,4 +1,5 @@
 import * as pairs from 'hexlet-pairs';
+import { getRandomIntInclusive } from './utils';
 
 export const cons = (element, list) => pairs.cons(element, list);
 
@@ -87,6 +88,19 @@ export const append = (list1, list2) => {
 };
 
 export const length = (seq) => reduce((n, acc) => acc + 1, 0, seq);
+
+export const get = (i, seq) => {
+  if (i === 1) {
+    return head(seq);
+  }
+
+  return get(i - 1, tail(seq));
+};
+
+export const random = (seq) => {
+  const n = getRandomIntInclusive(1, length(seq));
+  return get(n, seq);
+};
 
 export const s = (...elements) => {
   return elements.reverse().reduce((acc, item) => {
