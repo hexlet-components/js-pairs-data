@@ -56,12 +56,12 @@ describe('Data', () => {
     assert.ok(!data.isEqual(numbers2, numbers3));
   });
 
-  it('#isContains', () => {
+  it('#has', () => {
     const numbers = data.l(3, 4, 5, 8);
-    assert.ok(data.isContains(numbers, 3));
-    assert.ok(data.isContains(numbers, 8));
-    assert.ok(!data.isContains(numbers, 0));
-    assert.ok(!data.isContains(numbers, 7));
+    assert.ok(data.has(numbers, 3));
+    assert.ok(data.has(numbers, 8));
+    assert.ok(!data.has(numbers, 0));
+    assert.ok(!data.has(numbers, 7));
   });
 
   it('#s', () => {
@@ -71,16 +71,16 @@ describe('Data', () => {
 
   it('#conj', () => {
     const numbers = data.s(3, 4, 3, 5, 5);
-    assert.ok(!data.isContains(numbers, 0));
+    assert.ok(!data.has(numbers, 0));
     const numbers2 = data.conj(numbers, 0);
-    assert.ok(data.isContains(numbers2, 0));
+    assert.ok(data.has(numbers2, 0));
   });
 
   it('#disj', () => {
     const numbers = data.s(3, 4, 3, 5, 5);
-    assert.ok(data.isContains(numbers, 4));
+    assert.ok(data.has(numbers, 4));
     const numbers2 = data.disj(numbers, 4);
-    assert.ok(!data.isContains(numbers2, 4));
+    assert.ok(!data.has(numbers2, 4));
   });
 
   it('#toString', () => {

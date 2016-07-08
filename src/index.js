@@ -25,14 +25,14 @@ export const isEqual = (list1, list2) => {
   return isEqual(tail(list1), tail(list2));
 };
 
-export const isContains = (list, element) => {
+export const has = (list, element) => {
   if (isEmpty(list)) {
     return false;
   }
   if (head(list) === element) {
     return true;
   }
-  return isContains(tail(list), element);
+  return has(tail(list), element);
 };
 
 export const reverse = (list) => {
@@ -56,7 +56,7 @@ export const filter = (func, list) => {
 };
 
 export const conj = (set, element) => {
-  return isContains(set, element) ? set : cons(element, set);
+  return has(set, element) ? set : cons(element, set);
 };
 
 export const disj = (set, element) =>
@@ -104,7 +104,7 @@ export const random = (seq) => {
 
 export const s = (...elements) => {
   return elements.reverse().reduce((acc, item) => {
-    return isContains(acc, item) ? acc : conj(acc, item);
+    return has(acc, item) ? acc : conj(acc, item);
   }, l());
 };
 
