@@ -17,6 +17,8 @@ describe('Data', () => {
   it('#reverse', () => {
     const numbers = data.l(3, 4, 5);
     assert.equal(data.toString(data.reverse(numbers)), '(5, 4, 3)');
+
+    assert.equal(data.toString(data.reverse(data.l(1))), '(1)');
   });
 
   it('#map', () => {
@@ -46,6 +48,9 @@ describe('Data', () => {
     const numbers = data.l(3, 4, 5, 8);
     const numbers2 = data.l(3, 2, 9);
     assert.equal(data.toString(data.append(numbers, numbers2)), '(3, 4, 5, 8, 3, 2, 9)');
+
+    assert.equal(data.toString(data.append(data.l(), data.l(1, 10))), '(1, 10)');
+    assert.equal(data.toString(data.append(data.l(1, 10), data.l())), '(1, 10)');
   });
 
   it('#isEqual', () => {
