@@ -7,6 +7,11 @@ describe('Data', () => {
     assert.equal(data.toString(numbers), '(3, 4, 5)');
   });
 
+  it('#cons', () => {
+    const numbers = data.l(3, 4, 5);
+    assert.equal(data.toString(data.cons(8, numbers)), '(8, 3, 4, 5)');
+  });
+
   it('#isList', () => {
     const numbers = data.l(3, 4, 5);
     assert.ok(data.isList(numbers));

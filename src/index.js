@@ -1,21 +1,69 @@
+// @flow
+
 import * as pairs from 'hexlet-pairs';
 import { getRandomIntInclusive } from './utils';
 
-export const cons = (element, list) => pairs.cons(element, list);
+type List = (...args: any) => any | null;
+type SetOnPairs = (...args: any) => any | null;
 
-export const l = (...elements) =>
+/**
+ * Add element to list
+ * @example
+ * cons(5, l(1, 0)); // (5, 1, 0)
+ */
+export const cons = (element: any, list: List) => pairs.cons(element, list);
+
+/**
+ * List constructor
+ * @example
+ * l(); // ()
+ * l(8, 10); // (8, 10)
+ */
+export const l = (...elements: any): List =>
   elements.reverse().reduce((acc, item) =>
     cons(item, acc), null);
 
-export const head = (list) => pairs.car(list);
+/**
+ * Get list's head
+ * @example
+ * head(l(10, 15, 20)); // 10
+ */
+export const head = (list: List) => pairs.car(list);
 
-export const tail = (list) => pairs.cdr(list);
+/**
+ * Get list's tail
+ * @example
+ * tail(l(10, 15, 20)); // (15, 20)
+ */
+export const tail = (list: List) => pairs.cdr(list);
 
-export const isEmpty = (list) => list === null;
+/**
+ * Check if list is empty
+ * @example
+ * isEmpty(l()); // true
+ * isEmpty(l(0)); // false
+ * isEmpty(l('a', 5)); // false
+ */
+export const isEmpty = (list: List) => list === null;
 
-export const isList = (mix) => mix === null || pairs.isPair(mix);
+/**
+ * Check if argument is list
+ * @example
+ * isEmpty(l()); // true
+ * isEmpty(l('a', 5)); // true
+ * isEmpty(false); // false
+ * isEmpty('hello'); // false
+ */
+export const isList = (mix: any) => mix === null || pairs.isPair(mix);
 
-export const isEqual = (list1, list2) => {
+/**
+ * Compare 2 lists
+ * @example
+ * isEqual(l(), l()); // true
+ * isEqual(l(), l(8, 3)); // false
+ * isEqual(l(1, 2, 10), l(1, 2, 10)); // true
+ */
+export const isEqual = (list1: List, list2: List) => {
   if (isEmpty(list1) && isEmpty(list2)) {
     return true;
   }
@@ -25,7 +73,16 @@ export const isEqual = (list1, list2) => {
   return isEqual(tail(list1), tail(list2));
 };
 
-export const has = (list, element) => {
+/**
+ * Check if list has some element
+ * @example
+ * const numbers = l(3, 4, 5, 8);
+ * has(numbers, 3); // true
+ * has(numbers, 8); // true
+ * has(numbers, 0); // false
+ * has(numbers, 'wow'); // false
+ */
+export const has = (list: List, element: any) => {
   if (isEmpty(list)) {
     return false;
   }
@@ -35,14 +92,26 @@ export const has = (list, element) => {
   return has(tail(list), element);
 };
 
-export const reverse = (list) => {
+/**
+ * Reverse list
+ * @example
+ * reverse(l()); // ()
+ * reverse(l(8, 2, 10)); // (10, 2, 8)
+ */
+export const reverse = (list: List) => {
   const iter = (items, acc) => {
     return isEmpty(items) ? acc : iter(tail(items), cons(head(items), acc));
   };
   return iter(list, l());
 };
 
-export const filter = (func, list) => {
+/**
+ * Filter list
+ * @example
+ * const numbers = l(3, 4, 5, 8);
+ * filter(n => n % 2 === 0, numbers); // (4, 8)
+ */
+export const filter = <U>(func: (value: U) => bool, list: List<U>) => {
   const iter = (items, acc) => {
     if (isEmpty(items)) {
       return reverse(acc);
@@ -55,14 +124,27 @@ export const filter = (func, list) => {
   return iter(list, l());
 };
 
-export const conj = (set, element) => {
+/**
+ * Conj
+ */
+export const conj = (set: SetOnPairs, element: any) => {
   return has(set, element) ? set : cons(element, set);
 };
 
-export const disj = (set, element) =>
+
+/**
+ * Disj
+ */
+export const disj = (set: SetOnPairs, element: any) =>
   filter(e => e !== element, set);
 
-export const map = (func, list) => {
+/**
+ * Map list
+ * @example
+ * const numbers = l(3, 4, 5, 8);
+ * map(n => n + 2, numbers); // (5, 6, 7, 10)
+ */
+export const map = <U, T>(func: (value: T) => U, list: List<T>): List<U> => {
   const iter = (items, acc) => {
     if (isEmpty(items)) {
       return reverse(acc);
@@ -73,42 +155,83 @@ export const map = (func, list) => {
   return iter(list, l());
 };
 
-export const reduce = (func, acc, list) => {
+/**
+ * Reduce list
+ * @example
+ * const numbers = l(3, 4, 5, 8);
+ * reduce((n, acc) => acc + 1, 0, numbers); // 4
+ */
+export const reduce = (func, acc, list: List) => {
   const iter = (items, result) => {
     return isEmpty(items) ? result : iter(tail(items), func(head(items), result));
   };
   return iter(list, acc);
 };
 
-export const append = (list1, list2) => {
+/**
+ * Join 2 lists
+ * @example
+ * const numbers = l(3, 4, 5, 8);
+ * const numbers2 = l(3, 2, 9);
+ * append(numbers, numbers2); // (3, 4, 5, 8, 3, 2, 9)
+ * append(l(), l(1, 10)); (1, 10)
+ * append(l(1, 10), l()); // (1, 10)
+ */
+export const append = (list1: List, list2: List) => {
   if (isEmpty(list1)) {
     return list2;
   }
   return cons(head(list1), append(tail(list1), list2));
 };
 
-export const length = (seq) => reduce((n, acc) => acc + 1, 0, seq);
+/**
+ * List's length
+ * @example
+ * const numbers = l(3, 4, 5, 8);
+ * data.length(numbers); // 4
+ */
+export const length = (seq: List) => reduce((n, acc) => acc + 1, 0, seq);
 
-export const get = (i, seq) => {
-  if (i === 1) {
+/**
+ * Get element from list by index
+ * @example
+ * const numbers = l(3, 4, 5, 8);
+ * get(0, numbers); // 3
+ * get(1, numbers); // 4
+ * get(3, numbers); // 8
+ */
+export const get = (i: number, seq: List) => {
+  if (i === 0) {
     return head(seq);
   }
 
   return get(i - 1, tail(seq));
 };
 
-export const random = (seq) => {
-  const n = getRandomIntInclusive(1, length(seq));
+/**
+ * Get random element from list
+ */
+export const random = (seq: List) => {
+  const n = getRandomIntInclusive(1, length(seq) - 1);
   return get(n, seq);
 };
 
-export const s = (...elements) => {
+/**
+ * Constructor for Set
+ */
+export const s = (...elements: any) => {
   return elements.reverse().reduce((acc, item) => {
     return has(acc, item) ? acc : conj(acc, item);
   }, l());
 };
 
-export const toString = (list) => {
+/**
+ * Convert list to string
+ * @example
+ * toString(l()); // ()
+ * toString(l('hello', 'world')); // ('hello', 'world')
+ */
+export const toString = (list: List) => {
   if (!isList(list)) {
     return list;
   }

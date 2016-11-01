@@ -1,11 +1,6 @@
 {
-  "presets": ["es2015"],
+  "presets": ["latest"],
   "plugins": [
-    ["typecheck", {
-      "disable": {
-        "production": true
-      }
-    }],
     "syntax-flow",
     "transform-flow-strip-types"
   ]
