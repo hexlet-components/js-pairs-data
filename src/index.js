@@ -15,11 +15,12 @@ export const cons = (element: any, list: List) => pairs.cons(element, list);
 
 /**
  * List constructor
+ * @name l
  * @example
  * l(); // ()
  * l(8, 10); // (8, 10)
  */
-export const l = (...elements: any): List =>
+export const l = (...elements: any) =>
   elements.reverse().reduce((acc, item) =>
     cons(item, acc), null);
 
