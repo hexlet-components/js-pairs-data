@@ -50,10 +50,10 @@ export const isEmpty = (list: List) => list === null;
 /**
  * Check if argument is list
  * @example
- * isEmpty(l()); // true
- * isEmpty(l('a', 5)); // true
- * isEmpty(false); // false
- * isEmpty('hello'); // false
+ * isList(l()); // true
+ * isList(l('a', 5)); // true
+ * isList(false); // false
+ * isList('hello'); // false
  */
 export const isList = (mix: any) => mix === null || pairs.isPair(mix);
 
