@@ -213,7 +213,7 @@ export const get = (i: number, seq: List) => {
  * Get random element from list
  */
 export const random = (seq: List) => {
-  const n = getRandomIntInclusive(1, length(seq) - 1);
+  const n = getRandomIntInclusive(0, length(seq) - 1);
   return get(n, seq);
 };
 

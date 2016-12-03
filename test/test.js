@@ -108,5 +108,11 @@ describe('Data', () => {
     const randomNumber = data.random(numbers);
     assert.ok(randomNumber);
   });
+
+  it('#random 2', () => {
+    const numbers = data.l(3);
+    const randomNumber = data.random(numbers);
+    assert.equal(randomNumber, 3);
+  });
 });
 
