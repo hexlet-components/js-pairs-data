@@ -2257,8 +2257,12 @@ hawk@~3.1.3:
     sntp "1.x.x"
 
 hexlet-pairs@*:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/hexlet-pairs/-/hexlet-pairs-1.0.0.tgz#24d1dfbe8fcab028a91cb9555231ffd434b19179"
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hexlet-pairs/-/hexlet-pairs-1.0.2.tgz#755eff7da15595a1aff6c3bb719c06fcff7ca558"
+  dependencies:
+    babel-preset-env "*"
+    babel-preset-flow "*"
+    babel-preset-stage-0 "*"
 
 highlight.js@^9.1.0:
   version "9.11.0"
