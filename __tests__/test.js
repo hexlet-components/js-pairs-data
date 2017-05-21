@@ -1,6 +1,6 @@
 // @flow
 
-import { cons, isList, s, l, has, map, filter,
+import { cons, isList, s, l, has, map, filter, tail, head,
   append, isEqual, reverse, random, conj, disj,
   reduce, length, toString } from '../src';
 
@@ -13,6 +13,18 @@ describe('Data', () => {
   it('#cons', () => {
     const numbers = l(3, 4, 5);
     expect(toString(cons(8, numbers))).toBe('(8, 3, 4, 5)');
+  });
+
+  it('#head', () => {
+    const numbers = l(3, 4, 5);
+    expect(head(numbers)).toBe(3);
+    expect(() => head(5)).toThrowError(/5/);
+  });
+
+  it('#tail', () => {
+    const numbers = l(3, 4, 5);
+    expect(toString(tail(numbers))).toBe('(4, 5)');
+    expect(() => tail({ key: 'value' })).toThrowError(/value/);
   });
 
   it('#isList', () => {

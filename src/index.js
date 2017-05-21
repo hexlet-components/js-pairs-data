@@ -7,11 +7,39 @@ type List = (...args: any) => any | null;
 type SetOnPairs = (...args: any) => any | null;
 
 /**
+ * Check if argument is list
+ * @example
+ * isList(l()); // true
+ * isList(l('a', 5)); // true
+ * isList(false); // false
+ * isList('hello'); // false
+ */
+export const isList = (mix: any) => {
+  if (mix === null) {
+    return true;
+  }
+  if (pairs.isPair(mix)) {
+    return isList(pairs.cdr(mix));
+  }
+  return false;
+};
+
+export const checkList = (list: ?List) => {
+  if (!isList(list)) {
+    const value = typeof list === 'object' ? JSON.stringify(list, null, 2) : String(list);
+    throw new Error(`Argument must be list, but it was '${value}'`);
+  }
+};
+
+/**
  * Add element to list
  * @example
  * cons(5, l(1, 0)); // (5, 1, 0)
  */
-export const cons = (element: any, list: List) => pairs.cons(element, list);
+export const cons = (element: any, list: List) => {
+  checkList(list);
+  return pairs.cons(element, list);
+}
 
 /**
  * List constructor
@@ -29,14 +57,20 @@ export const l = (...elements: any) =>
  * @example
  * head(l(10, 15, 20)); // 10
  */
-export const head = (list: List) => pairs.car(list);
+export const head = (list: List) => {
+  checkList(list);
+  return pairs.car(list);
+}
 
 /**
  * Get list's tail
  * @example
  * tail(l(10, 15, 20)); // (15, 20)
  */
-export const tail = (list: List) => pairs.cdr(list);
+export const tail = (list: List) => {
+  checkList(list);
+  return pairs.cdr(list);
+}
 
 /**
  * Check if list is empty
@@ -45,17 +79,10 @@ export const tail = (list: List) => pairs.cdr(list);
  * isEmpty(l(0)); // false
  * isEmpty(l('a', 5)); // false
  */
-export const isEmpty = (list: List) => list === null;
-
-/**
- * Check if argument is list
- * @example
- * isList(l()); // true
- * isList(l('a', 5)); // true
- * isList(false); // false
- * isList('hello'); // false
- */
-export const isList = (mix: any) => mix === null || pairs.isPair(mix);
+export const isEmpty = (list: List) => {
+  checkList(list);
+  return list === null;
+}
 
 /**
  * Compare 2 lists
@@ -65,6 +92,8 @@ export const isList = (mix: any) => mix === null || pairs.isPair(mix);
  * isEqual(l(1, 2, 10), l(1, 2, 10)); // true
  */
 export const isEqual = (list1: List, list2: List) => {
+  checkList(list1);
+  checkList(list2);
   if (isEmpty(list1) && isEmpty(list2)) {
     return true;
   }
@@ -84,6 +113,7 @@ export const isEqual = (list1: List, list2: List) => {
  * has(numbers, 'wow'); // false
  */
 export const has = (list: List, element: any) => {
+  checkList(list);
   if (isEmpty(list)) {
     return false;
   }
@@ -100,6 +130,7 @@ export const has = (list: List, element: any) => {
  * reverse(l(8, 2, 10)); // (10, 2, 8)
  */
 export const reverse = (list: List) => {
+  checkList(list);
   const iter = (items, acc) => {
     return isEmpty(items) ? acc : iter(tail(items), cons(head(items), acc));
   };
@@ -113,6 +144,7 @@ export const reverse = (list: List) => {
  * filter(n => n % 2 === 0, numbers); // (4, 8)
  */
 export const filter = <U>(func: (value: U) => bool, list: List<U>) => {
+  checkList(list);
   const iter = (items, acc) => {
     if (isEmpty(items)) {
       return reverse(acc);
@@ -146,6 +178,7 @@ export const disj = (set: SetOnPairs, element: any) =>
  * map(n => n + 2, numbers); // (5, 6, 7, 10)
  */
 export const map = <U, T>(func: (value: T) => U, list: List<T>): List<U> => {
+  checkList(list);
   const iter = (items, acc) => {
     if (isEmpty(items)) {
       return reverse(acc);
@@ -163,9 +196,9 @@ export const map = <U, T>(func: (value: T) => U, list: List<T>): List<U> => {
  * reduce((n, acc) => acc + 1, 0, numbers); // 4
  */
 export const reduce = (func, acc, list: List) => {
-  const iter = (items, result) => {
-    return isEmpty(items) ? result : iter(tail(items), func(head(items), result));
-  };
+  checkList(list);
+  const iter = (items, result) => (isEmpty(items) ?
+    result : iter(tail(items), func(head(items), result)));
   return iter(list, acc);
 };
 
@@ -179,6 +212,8 @@ export const reduce = (func, acc, list: List) => {
  * append(l(1, 10), l()); // (1, 10)
  */
 export const append = (list1: List, list2: List) => {
+  checkList(list1);
+  checkList(list2);
   if (isEmpty(list1)) {
     return list2;
   }
@@ -191,7 +226,10 @@ export const append = (list1: List, list2: List) => {
  * const numbers = l(3, 4, 5, 8);
  * data.length(numbers); // 4
  */
-export const length = (seq: List) => reduce((n, acc) => acc + 1, 0, seq);
+export const length = (seq: List) => {
+  checkList(seq);
+  return reduce((n, acc) => acc + 1, 0, seq);
+};
 
 /**
  * Get element from list by index
@@ -202,6 +240,7 @@ export const length = (seq: List) => reduce((n, acc) => acc + 1, 0, seq);
  * get(3, numbers); // 8
  */
 export const get = (i: number, seq: List) => {
+  checkList(seq);
   if (i === 0) {
     return head(seq);
   }
@@ -213,6 +252,7 @@ export const get = (i: number, seq: List) => {
  * Get random element from list
  */
 export const random = (seq: List) => {
+  checkList(seq);
   const n = getRandomIntInclusive(0, length(seq) - 1);
   return get(n, seq);
 };
