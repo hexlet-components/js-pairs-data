@@ -26,7 +26,14 @@ export const isList = (mix: any) => {
 
 export const checkList = (list: ?List) => {
   if (!isList(list)) {
-    const value = typeof list === 'object' ? JSON.stringify(list, null, 2) : String(list);
+    let value;
+    if (pairs.isPair(list)) {
+      value = `pair: ${pairs.toString(list)}`;
+    } else if (typeof list === 'object') {
+      value = JSON.stringify(list, null, 2);
+    } else {
+      value = String(list);
+    }
     throw new Error(`Argument must be list, but it was '${value}'`);
   }
 };

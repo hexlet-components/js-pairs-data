@@ -1,7 +1,8 @@
 // @flow
 
+import * as pairs from 'hexlet-pairs';
 import { cons, isList, s, l, has, map, filter, tail, head,
-  append, isEqual, reverse, random, conj, disj,
+  append, isEqual, reverse, random, conj, disj, checkList,
   reduce, length, toString } from '../src';
 
 describe('Data', () => {
@@ -31,7 +32,13 @@ describe('Data', () => {
     const numbers = l(3, 4, 5);
     expect(isList(numbers)).toBe(true);
     expect(isList(l())).toBe(true);
-    expect(!isList(5)).toBe(true);
+    expect(isList(5)).toBe(false);
+    expect(!isList(pairs.cons(3, pairs.cons(3, 2)))).toBe(true);
+  });
+
+  it('#checkList', () => {
+    const pair = pairs.cons(3, pairs.cons(3, 2));
+    expect(() => checkList(pair)).toThrowError('pair: (3, (3, 2))');
   });
 
   it('#reverse', () => {
