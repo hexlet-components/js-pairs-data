@@ -46,7 +46,7 @@ export const checkList = (list: ?List) => {
 export const cons = (element: any, list: List) => {
   checkList(list);
   return pairs.cons(element, list);
-}
+};
 
 /**
  * List constructor
@@ -67,7 +67,7 @@ export const l = (...elements: any) =>
 export const head = (list: List) => {
   checkList(list);
   return pairs.car(list);
-}
+};
 
 /**
  * Get list's tail
@@ -77,7 +77,7 @@ export const head = (list: List) => {
 export const tail = (list: List) => {
   checkList(list);
   return pairs.cdr(list);
-}
+};
 
 /**
  * Check if list is empty
@@ -89,7 +89,7 @@ export const tail = (list: List) => {
 export const isEmpty = (list: List) => {
   checkList(list);
   return list === null;
-}
+};
 
 /**
  * Compare 2 lists
@@ -138,9 +138,9 @@ export const has = (list: List, element: any) => {
  */
 export const reverse = (list: List) => {
   checkList(list);
-  const iter = (items, acc) => {
-    return isEmpty(items) ? acc : iter(tail(items), cons(head(items), acc));
-  };
+  const iter = (items, acc) =>
+    (isEmpty(items) ? acc : iter(tail(items), cons(head(items), acc)));
+
   return iter(list, l());
 };
 
@@ -167,9 +167,8 @@ export const filter = <U>(func: (value: U) => bool, list: List<U>) => {
 /**
  * Conj
  */
-export const conj = (set: SetOnPairs, element: any) => {
-  return has(set, element) ? set : cons(element, set);
-};
+export const conj = (set: SetOnPairs, element: any) =>
+  (has(set, element) ? set : cons(element, set));
 
 
 /**
@@ -214,17 +213,17 @@ export const reduce = (func, acc, list: List) => {
  * @example
  * const numbers = l(3, 4, 5, 8);
  * const numbers2 = l(3, 2, 9);
- * append(numbers, numbers2); // (3, 4, 5, 8, 3, 2, 9)
- * append(l(), l(1, 10)); (1, 10)
- * append(l(1, 10), l()); // (1, 10)
+ * concat(numbers, numbers2); // (3, 4, 5, 8, 3, 2, 9)
+ * concat(l(), l(1, 10)); (1, 10)
+ * concat(l(1, 10), l()); // (1, 10)
  */
-export const append = (list1: List, list2: List) => {
+export const concat = (list1: List, list2: List) => {
   checkList(list1);
   checkList(list2);
   if (isEmpty(list1)) {
     return list2;
   }
-  return cons(head(list1), append(tail(list1), list2));
+  return cons(head(list1), concat(tail(list1), list2));
 };
 
 /**
@@ -267,12 +266,9 @@ export const random = (seq: List) => {
 /**
  * Constructor for Set
  */
-export const s = (...elements: any) => {
-  return elements.reverse().reduce((acc, item) => {
-    return has(acc, item) ? acc : conj(acc, item);
-  }, l());
-};
-
+export const s = (...elements: any) =>
+  elements.reverse().reduce((acc, item) =>
+    (has(acc, item) ? acc : conj(acc, item)), l());
 /**
  * Convert list to string
  * @example
@@ -281,6 +277,11 @@ export const s = (...elements: any) => {
  */
 export const toString = (list: List) => {
   if (!isList(list)) {
+    if (pairs.isPair(list)) {
+      return `pair: ${pairs.toString(list)}`;
+    } else if (typeof list === 'object') {
+      return JSON.stringify(list, null, 2);
+    }
     return list;
   }
 
