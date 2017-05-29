@@ -2,7 +2,7 @@
 
 import * as pairs from 'hexlet-pairs';
 import { cons, isList, s, l, has, map, filter, tail, head,
-  append, isEqual, reverse, random, conj, disj, checkList,
+  concat, isEqual, reverse, random, conj, disj, checkList,
   reduce, length, toString } from '../src';
 
 describe('Data', () => {
@@ -71,13 +71,13 @@ describe('Data', () => {
     expect(count).toBe(4);
   });
 
-  it('#append', () => {
+  it('#concat', () => {
     const numbers = l(3, 4, 5, 8);
     const numbers2 = l(3, 2, 9);
-    expect(toString(append(numbers, numbers2))).toBe('(3, 4, 5, 8, 3, 2, 9)');
+    expect(toString(concat(numbers, numbers2))).toBe('(3, 4, 5, 8, 3, 2, 9)');
 
-    expect(toString(append(l(), l(1, 10)))).toBe('(1, 10)');
-    expect(toString(append(l(1, 10), l()))).toBe('(1, 10)');
+    expect(toString(concat(l(), l(1, 10)))).toBe('(1, 10)');
+    expect(toString(concat(l(1, 10), l()))).toBe('(1, 10)');
   });
 
   it('#isEqual', () => {
@@ -123,6 +123,8 @@ describe('Data', () => {
   it('#toString2', () => {
     const list = l(3, l(4, 5), l(10, l(3)), 5, 5);
     expect(toString(list)).toBe('(3, (4, 5), (10, (3)), 5, 5)');
+    const list2 = l(3, pairs.cons(4, 5), pairs.cons(10, 3), 5, 5);
+    expect(toString(list2)).toBe('(3, pair: (4, 5), pair: (10, 3), 5, 5)');
   });
 
   it('#random', () => {

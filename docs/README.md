@@ -20,7 +20,7 @@
 -   [disj](#disj)
 -   [map](#map)
 -   [reduce](#reduce)
--   [append](#append)
+-   [concat](#concat)
 -   [length](#length)
 -   [get](#get)
 -   [random](#random)
@@ -33,8 +33,8 @@ Add element to list
 
 **Parameters**
 
--   `element` **any** 
--   `list` **List** 
+-   `element` **any**
+-   `list` **List**
 
 **Examples**
 
@@ -48,7 +48,7 @@ List constructor
 
 **Parameters**
 
--   `elements` **...any** 
+-   `elements` **...any**
 
 **Examples**
 
@@ -63,7 +63,7 @@ Get list's head
 
 **Parameters**
 
--   `list` **List** 
+-   `list` **List**
 
 **Examples**
 
@@ -77,7 +77,7 @@ Get list's tail
 
 **Parameters**
 
--   `list` **List** 
+-   `list` **List**
 
 **Examples**
 
@@ -91,7 +91,7 @@ Check if list is empty
 
 **Parameters**
 
--   `list` **List** 
+-   `list` **List**
 
 **Examples**
 
@@ -107,7 +107,7 @@ Check if argument is list
 
 **Parameters**
 
--   `mix` **any** 
+-   `mix` **any**
 
 **Examples**
 
@@ -124,8 +124,8 @@ Compare 2 lists
 
 **Parameters**
 
--   `list1` **List** 
--   `list2` **List** 
+-   `list1` **List**
+-   `list2` **List**
 
 **Examples**
 
@@ -141,8 +141,8 @@ Check if list has some element
 
 **Parameters**
 
--   `list` **List** 
--   `element` **any** 
+-   `list` **List**
+-   `element` **any**
 
 **Examples**
 
@@ -160,7 +160,7 @@ Reverse list
 
 **Parameters**
 
--   `list` **List** 
+-   `list` **List**
 
 **Examples**
 
@@ -175,8 +175,8 @@ Filter list
 
 **Parameters**
 
--   `func` **function (value: U): [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
--   `list` **List&lt;U>** 
+-   `func` **function (value: U): [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**
+-   `list` **List&lt;U>**
 
 **Examples**
 
@@ -191,8 +191,8 @@ Conj
 
 **Parameters**
 
--   `set` **SetOnPairs** 
--   `element` **any** 
+-   `set` **SetOnPairs**
+-   `element` **any**
 
 ## disj
 
@@ -200,8 +200,8 @@ Disj
 
 **Parameters**
 
--   `set` **SetOnPairs** 
--   `element` **any** 
+-   `set` **SetOnPairs**
+-   `element` **any**
 
 ## map
 
@@ -209,8 +209,8 @@ Map list
 
 **Parameters**
 
--   `func` **function (value: T): U** 
--   `list` **List&lt;T>** 
+-   `func` **function (value: T): U**
+-   `list` **List&lt;T>**
 
 **Examples**
 
@@ -219,7 +219,7 @@ const numbers = l(3, 4, 5, 8);
 map(n => n + 2, numbers); // (5, 6, 7, 10)
 ```
 
-Returns **List&lt;U>** 
+Returns **List&lt;U>**
 
 ## reduce
 
@@ -229,7 +229,7 @@ Reduce list
 
 -   `func`  
 -   `acc`  
--   `list` **List** 
+-   `list` **List**
 
 **Examples**
 
@@ -238,23 +238,23 @@ const numbers = l(3, 4, 5, 8);
 reduce((n, acc) => acc + 1, 0, numbers); // 4
 ```
 
-## append
+## concat
 
 Join 2 lists
 
 **Parameters**
 
--   `list1` **List** 
--   `list2` **List** 
+-   `list1` **List**
+-   `list2` **List**
 
 **Examples**
 
 ```javascript
 const numbers = l(3, 4, 5, 8);
 const numbers2 = l(3, 2, 9);
-append(numbers, numbers2); // (3, 4, 5, 8, 3, 2, 9)
-append(l(), l(1, 10)); (1, 10)
-append(l(1, 10), l()); // (1, 10)
+concat(numbers, numbers2); // (3, 4, 5, 8, 3, 2, 9)
+concat(l(), l(1, 10)); (1, 10)
+concat(l(1, 10), l()); // (1, 10)
 ```
 
 ## length
@@ -263,7 +263,7 @@ List's length
 
 **Parameters**
 
--   `seq` **List** 
+-   `seq` **List**
 
 **Examples**
 
@@ -278,8 +278,8 @@ Get element from list by index
 
 **Parameters**
 
--   `i` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
--   `seq` **List** 
+-   `i` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)**
+-   `seq` **List**
 
 **Examples**
 
@@ -296,7 +296,7 @@ Get random element from list
 
 **Parameters**
 
--   `seq` **List** 
+-   `seq` **List**
 
 ## s
 
@@ -304,7 +304,7 @@ Constructor for Set
 
 **Parameters**
 
--   `elements` **...any** 
+-   `elements` **...any**
 
 ## toString
 
@@ -312,7 +312,7 @@ Convert list to string
 
 **Parameters**
 
--   `list` **List** 
+-   `list` **List**
 
 **Examples**
 
