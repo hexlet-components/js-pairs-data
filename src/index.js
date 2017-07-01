@@ -1,5 +1,7 @@
 // @flow
 
+import 'source-map-support/register';
+
 import * as pairs from 'hexlet-pairs';
 import { getRandomIntInclusive } from './utils';
 
@@ -150,7 +152,7 @@ export const reverse = (list: List) => {
  * const numbers = l(3, 4, 5, 8);
  * filter(n => n % 2 === 0, numbers); // (4, 8)
  */
-export const filter = <U>(func: (value: U) => bool, list: List<U>) => {
+export const filter = <U>(func: (value: U) => boolean, list: List<U>) => {
   checkList(list);
   const iter = (items, acc) => {
     if (isEmpty(items)) {
