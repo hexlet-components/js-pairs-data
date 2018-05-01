@@ -1,9 +1,26 @@
 // @flow
 
 import * as pairs from 'hexlet-pairs';
-import { cons, isList, s, l, has, map, filter, tail, head,
-  concat, isEqual, reverse, random, conj, disj, checkList,
-  reduce, length, toString } from '../src';
+import { cons,
+  isList,
+  s,
+  l,
+  has,
+  map,
+  filter,
+  tail,
+  head,
+  concat,
+  isEqual,
+  reverse,
+  random,
+  conj,
+  disj,
+  checkList,
+  reduce,
+  length,
+  toString
+} from '../src';
 
 describe('Data', () => {
   it('#make', () => {

@@ -8,6 +8,7 @@
     "test": "jest --colors",
     "build": "babel src --out-dir dist --source-maps",
     "eslint": "eslint",
+    "flow": "flow",
     "flow-typed": "flow-typed",
     "prepublish": "npm run build"
   },
@@ -28,8 +29,7 @@
     "babel-preset-env": "*",
     "babel-preset-flow": "*",
     "babel-preset-stage-0": "*",
-    "hexlet-pairs": "*",
-    "source-map-support": "*"
+    "hexlet-pairs": "*"
   },
   "devDependencies": {
     "babel-cli": "*",
@@ -41,8 +41,9 @@
     "eslint-config-airbnb": "*",
     "eslint-plugin-flowtype": "*",
     "eslint-plugin-import": "*",
+    "eslint-plugin-jest": "^21.15.1",
     "flow-bin": "^0.49.1",
     "flow-typed": "*",
-    "jest": "^20"
+    "jest": "^22"
   }
 }

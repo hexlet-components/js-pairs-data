@@ -1,7 +1,5 @@
 // @flow
 
-import 'source-map-support/register';
-
 import * as pairs from 'hexlet-pairs';
 import { getRandomIntInclusive } from './utils';
 
