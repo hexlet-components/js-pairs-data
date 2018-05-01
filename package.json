@@ -6,7 +6,7 @@
   "scripts": {
     "documentation": "documentation",
     "test": "jest --colors",
-    "build": "babel src --out-dir dist --source-maps",
+    "build": "babel src --out-dir dist --source-maps inline",
     "eslint": "eslint",
     "flow": "flow",
     "flow-typed": "flow-typed",
@@ -29,7 +29,7 @@
     "babel-preset-env": "*",
     "babel-preset-flow": "*",
     "babel-preset-stage-0": "*",
-    "hexlet-pairs": "*"
+    "hexlet-pairs": "^1.0.7"
   },
   "devDependencies": {
     "babel-cli": "*",
