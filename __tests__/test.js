@@ -19,7 +19,10 @@ import { cons,
   checkList,
   reduce,
   length,
-  toString
+  toString,
+  attach,
+  typeTag,
+  contents
 } from '../src';
 
 describe('Data', () => {
@@ -154,5 +157,30 @@ describe('Data', () => {
     const numbers = l(3);
     const randomNumber = random(numbers);
     expect(randomNumber).toBe(3);
+  });
+
+  it('#random 2', () => {
+    const numbers = l(3);
+    const randomNumber = random(numbers);
+    expect(randomNumber).toBe(3);
+  });
+
+  it('#attach', () => {
+    const data = l(3, 4, 5);
+    const typeData = attach('typeName', data);
+    expect(typeTag(typeData)).toBe('typeName');
+    expect(toString(contents(typeData))).toBe('(3, 4, 5)');
+  });
+
+  it('#typeTag', () => {
+    const data = l();
+    const typeData = attach('typeName', data);
+    expect(typeTag(typeData)).toBe('typeName');
+  });
+
+  it('#contents', () => {
+    const data = l(2, 3, 4);
+    const typeData = attach('', data);
+    expect(toString(contents(typeData))).toBe('(2, 3, 4)');
   });
 });
