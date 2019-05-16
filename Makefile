@@ -1,6 +1,5 @@
 install:
 	npm install
-	npm run flow-typed install
 
 docs:
 	mkdir -p docs
@@ -9,13 +8,13 @@ docs:
 build:
 	rm -rf dist
 	mkdir dist
-	npm run build
+	npm build
 
 test:
-	npm run test
+	npm test
 
 lint:
-	npm run eslint .
+	npx eslint .
 
 publish:
 	npm publish

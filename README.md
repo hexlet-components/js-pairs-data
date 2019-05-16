@@ -1,1 +1,1 @@
-# js-pairs-data
+# js-types
