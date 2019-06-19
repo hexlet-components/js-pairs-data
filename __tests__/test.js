@@ -1,7 +1,8 @@
 // @flow
 
-import * as pairs from 'hexlet-pairs';
-import { cons,
+import * as pairs from '@hexlet/pairs';
+import {
+  cons,
   isList,
   s,
   l,
@@ -19,7 +20,7 @@ import { cons,
   checkList,
   reduce,
   length,
-  toString
+  toString,
 } from '../src';
 
 describe('Data', () => {
@@ -77,12 +78,12 @@ describe('Data', () => {
     expect(toString(numbers2)).toBe('(4, 8)');
   });
 
-  it('#reduce', () => {
+  it('#reduce1', () => {
     const numbers = l(3, 4, 5, 8);
     expect(length(numbers)).toBe(4);
   });
 
-  it('#reduce', () => {
+  it('#reduce2', () => {
     const numbers = l(3, 4, 5, 8);
     const count = reduce((n, acc) => acc + 1, 0, numbers);
     expect(count).toBe(4);
