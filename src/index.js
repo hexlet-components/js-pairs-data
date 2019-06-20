@@ -1,6 +1,6 @@
 // @flow
 
-import * as pairs from 'hexlet-pairs';
+import * as pairs from '@hexlet/pairs';
 import { getRandomIntInclusive } from './utils';
 
 type List = (...args: any) => any | null;

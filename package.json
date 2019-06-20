@@ -1,6 +1,6 @@
 {
-  "name": "hexlet-pairs-data",
-  "version": "1.0.8",
+  "name": "@hexlet/pairs-data",
+  "version": "1.0.9",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -29,7 +29,7 @@
     "babel-preset-env": "*",
     "babel-preset-flow": "*",
     "babel-preset-stage-0": "*",
-    "hexlet-pairs": "^1.0.7"
+    "@hexlet/pairs": "^1.0.9"
   },
   "devDependencies": {
     "babel-cli": "*",
@@ -39,6 +39,7 @@
     "documentation": ">= v4.0.0-rc.1",
     "eslint": "*",
     "eslint-config-airbnb": "*",
+    "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-flowtype": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-jest": "^21.15.1",
