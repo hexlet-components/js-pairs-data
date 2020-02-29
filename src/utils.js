@@ -1,4 +1,7 @@
-export const identity = value => value;
+// @ts-check
 
-export const getRandomIntInclusive = (min, max) =>
-  Math.floor(Math.random() * ((max - min) + 1)) + min;
+export const identity = (value) => value;
+
+export const getRandomIntInclusive = (min, max) => (
+  Math.floor(Math.random() * ((max - min) + 1)) + min
+);

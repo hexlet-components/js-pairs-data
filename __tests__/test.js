@@ -1,4 +1,4 @@
-// @flow
+// @ts-check
 
 import * as pairs from '@hexlet/pairs';
 import {
@@ -68,13 +68,13 @@ describe('Data', () => {
 
   it('#map', () => {
     const numbers = l(3, 4, 5);
-    const numbers2 = map(n => n + 2, numbers);
+    const numbers2 = map((n) => n + 2, numbers);
     expect(toString(numbers2)).toBe('(5, 6, 7)');
   });
 
   it('#filter', () => {
     const numbers = l(3, 4, 5, 8);
-    const numbers2 = filter(n => n % 2 === 0, numbers);
+    const numbers2 = filter((n) => n % 2 === 0, numbers);
     expect(toString(numbers2)).toBe('(4, 8)');
   });
 
