@@ -50,9 +50,9 @@ export const cons = (element, list) => {
  * l(); // ()
  * l(8, 10); // (8, 10)
  */
-export const l = (...elements) =>
-  elements.reverse().reduce((acc, item) =>
-    cons(item, acc), null);
+export const l = (...elements) => (
+  elements.reverse().reduce((acc, item) => cons(item, acc), null)
+);
 
 /**
  * Get list's head
@@ -133,8 +133,9 @@ export const has = (list, element) => {
  */
 export const reverse = (list) => {
   checkList(list);
-  const iter = (items, acc) =>
-    (isEmpty(items) ? acc : iter(tail(items), cons(head(items), acc)));
+  const iter = (items, acc) => (
+    isEmpty(items) ? acc : iter(tail(items), cons(head(items), acc))
+  );
 
   return iter(list, l());
 };
@@ -162,15 +163,17 @@ export const filter = (func, list) => {
 /**
  * Conj
  */
-export const conj = (set, element) =>
-  (has(set, element) ? set : cons(element, set));
+export const conj = (set, element) => (
+  has(set, element) ? set : cons(element, set)
+);
 
 
 /**
  * Disj
  */
-export const disj = (set, element) =>
-  filter(e => e !== element, set);
+export const disj = (set, element) => (
+  filter((e) => e !== element, set)
+);
 
 /**
  * Map list
@@ -198,8 +201,12 @@ export const map = (func, list) => {
  */
 export const reduce = (func, acc, list) => {
   checkList(list);
-  const iter = (items, result) => (isEmpty(items) ?
-    result : iter(tail(items), func(head(items), result)));
+  const iter = (items, result) => (
+    isEmpty(items)
+      ? result
+      : iter(tail(items), func(head(items), result))
+  );
+
   return iter(list, acc);
 };
 
@@ -261,9 +268,10 @@ export const random = (seq) => {
 /**
  * Constructor for Set
  */
-export const s = (...elements) =>
-  elements.reverse().reduce((acc, item) =>
-    (has(acc, item) ? acc : conj(acc, item)), l());
+export const s = (...elements) => elements
+  .reverse()
+  .reduce((acc, item) => (has(acc, item) ? acc : conj(acc, item)), l());
+
 /**
  * Convert list to string
  * @example
@@ -274,7 +282,8 @@ export const toString = (list) => {
   if (!isList(list)) {
     if (pairs.isPair(list)) {
       return `pair: ${pairs.toString(list)}`;
-    } else if (typeof list === 'object') {
+    }
+    if (typeof list === 'object') {
       return JSON.stringify(list, null, 2);
     }
     return list;
