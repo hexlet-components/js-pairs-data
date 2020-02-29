@@ -2,7 +2,6 @@ install:
 	npm install
 
 docs:
-	mkdir -p docs
 	npm run documentation -- build src/index.js -f md > docs/README.md
 
 build:
@@ -17,6 +16,6 @@ lint:
 	npx eslint .
 
 publish:
-	npm publish
+	npm publish --access public
 
 .PHONY: test docs

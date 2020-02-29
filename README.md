@@ -5,5 +5,32 @@
 ## Install
 
 ```sh
-npm install @hexlet/pairs-data --save
+npm install @hexlet/pairs-data
 ```
+
+## Usage example
+
+```javascript
+import {
+  l, isList, toString, cons, filter, head, tail
+} from '@hexlet/pairs-data';
+
+const numbers = l(3, 4, 5, 6, 7);
+toString(numbers); // (3, 4, 5, 6, 7)
+
+const first = head(numbers); // 3
+const rest = tail(numbers);
+toString(rest); // (4, 5, 6, 7)
+
+isList(first); // false
+isList(rest); // true
+
+const newList = cons(8, rest);
+toString(newList); // (8, 4, 5, 6, 7)
+
+const filtered = filter((el) => el < 7, newList);
+isList(filtered); // true
+toString(filtered); // (4, 5, 6)
+```
+
+For more information, see the [Full Documentation](https://github.com/hexlet-components/js-pairs-data/tree/master/docs)

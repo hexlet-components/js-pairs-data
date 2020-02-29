@@ -1,3 +1,5 @@
+// @ts-check
+
 import * as pairs from '@hexlet/pairs';
 import {
   cons,

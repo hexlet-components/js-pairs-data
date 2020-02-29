@@ -1,3 +1,5 @@
+// @ts-check
+
 export const identity = (value) => value;
 
 export const getRandomIntInclusive = (min, max) => (

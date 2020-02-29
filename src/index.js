@@ -1,3 +1,5 @@
+// @ts-check
+
 import * as pairs from '@hexlet/pairs';
 import { getRandomIntInclusive } from './utils';
 
@@ -144,16 +146,16 @@ export const reverse = (list) => {
  * Filter list
  * @example
  * const numbers = l(3, 4, 5, 8);
- * filter(n => n % 2 === 0, numbers); // (4, 8)
+ * filter(num => num % 2 === 0, numbers); // (4, 8)
  */
-export const filter = (func, list) => {
+export const filter = (callbackFn, list) => {
   checkList(list);
   const iter = (items, acc) => {
     if (isEmpty(items)) {
       return reverse(acc);
     }
     const item = head(items);
-    const newAcc = func(item) ? cons(item, acc) : acc;
+    const newAcc = callbackFn(item) ? cons(item, acc) : acc;
     return iter(tail(items), newAcc);
   };
 
@@ -162,32 +164,39 @@ export const filter = (func, list) => {
 
 /**
  * Conj
+ * @example
+ * const numbers = l(3, 4, 5, 8);
+ * conj(numbers, 5); // (3, 4, 5, 8)
+ * conj(numbers, 9); // (9, 3, 4, 5, 8)
  */
-export const conj = (set, element) => (
-  has(set, element) ? set : cons(element, set)
+export const conj = (list, element) => (
+  has(list, element) ? list : cons(element, list)
 );
 
 
 /**
  * Disj
+ * @example
+ * const numbers = l(5, 4, 5, 8);
+ * disj(numbers, 5); // (4, 8)
  */
-export const disj = (set, element) => (
-  filter((e) => e !== element, set)
+export const disj = (list, element) => (
+  filter((e) => e !== element, list)
 );
 
 /**
  * Map list
  * @example
  * const numbers = l(3, 4, 5, 8);
- * map(n => n + 2, numbers); // (5, 6, 7, 10)
+ * map(num => num + 2, numbers); // (5, 6, 7, 10)
  */
-export const map = (func, list) => {
+export const map = (callbackFn, list) => {
   checkList(list);
   const iter = (items, acc) => {
     if (isEmpty(items)) {
       return reverse(acc);
     }
-    return iter(tail(items), cons(func(head(items)), acc));
+    return iter(tail(items), cons(callbackFn(head(items)), acc));
   };
 
   return iter(list, l());
@@ -197,14 +206,14 @@ export const map = (func, list) => {
  * Reduce list
  * @example
  * const numbers = l(3, 4, 5, 8);
- * reduce((n, acc) => acc + 1, 0, numbers); // 4
+ * reduce((num, acc) => acc + 1, 0, numbers); // 4
  */
-export const reduce = (func, acc, list) => {
+export const reduce = (callbackFn, acc, list) => {
   checkList(list);
   const iter = (items, result) => (
     isEmpty(items)
       ? result
-      : iter(tail(items), func(head(items), result))
+      : iter(tail(items), callbackFn(head(items), result))
   );
 
   return iter(list, acc);
@@ -234,9 +243,9 @@ export const concat = (list1, list2) => {
  * const numbers = l(3, 4, 5, 8);
  * data.length(numbers); // 4
  */
-export const length = (seq) => {
-  checkList(seq);
-  return reduce((n, acc) => acc + 1, 0, seq);
+export const length = (list) => {
+  checkList(list);
+  return reduce((n, acc) => acc + 1, 0, list);
 };
 
 /**
@@ -247,27 +256,27 @@ export const length = (seq) => {
  * get(1, numbers); // 4
  * get(3, numbers); // 8
  */
-export const get = (i, seq) => {
-  checkList(seq);
-  if (i === 0) {
-    return head(seq);
+export const get = (index, list) => {
+  checkList(list);
+  if (index === 0) {
+    return head(list);
   }
 
-  return get(i - 1, tail(seq));
+  return get(index - 1, tail(list));
 };
 
 /**
  * Get random element from list
+ * @example
+ * const numbers = l(3, 4, 5, 8);
+ * random(); // one random item from 3, 4, 5, 8
  */
-export const random = (seq) => {
-  checkList(seq);
-  const n = getRandomIntInclusive(0, length(seq) - 1);
-  return get(n, seq);
+export const random = (list) => {
+  checkList(list);
+  const n = getRandomIntInclusive(0, length(list) - 1);
+  return get(n, list);
 };
 
-/**
- * Constructor for Set
- */
 export const s = (...elements) => elements
   .reverse()
   .reduce((acc, item) => (has(acc, item) ? acc : conj(acc, item)), l());
