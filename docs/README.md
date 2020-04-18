@@ -347,7 +347,7 @@ Get random element from list
 
 ```javascript
 const numbers = l(3, 4, 5, 8);
-random(); // one random item from 3, 4, 5, 8
+random(numbers); // one random item from 3, 4, 5, 8
 ```
 
 ## toString
