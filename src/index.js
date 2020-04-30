@@ -269,7 +269,7 @@ export const get = (index, list) => {
  * Get random element from list
  * @example
  * const numbers = l(3, 4, 5, 8);
- * random(); // one random item from 3, 4, 5, 8
+ * random(numbers); // one random item from 3, 4, 5, 8
  */
 export const random = (list) => {
   checkList(list);
