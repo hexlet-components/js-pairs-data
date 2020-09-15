@@ -21,7 +21,7 @@ import {
   reduce,
   length,
   toString,
-} from '../src';
+} from '../src/index.js';
 
 describe('Data', () => {
   it('#make', () => {

@@ -1,7 +1,7 @@
 // @ts-check
 
 import * as pairs from '@hexlet/pairs';
-import { getRandomIntInclusive } from './utils';
+import { getRandomIntInclusive } from './utils.js';
 
 /**
  * Check if argument is list
@@ -172,7 +172,6 @@ export const filter = (callbackFn, list) => {
 export const conj = (list, element) => (
   has(list, element) ? list : cons(element, list)
 );
-
 
 /**
  * Disj
