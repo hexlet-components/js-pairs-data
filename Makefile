@@ -3,15 +3,22 @@ install:
 
 docs:
 	mkdir -p docs
-	npm run documentation -- build src/index.js -f md > docs/README.md
+	npm run documentation -s > docs/README.md
 
 test:
 	npm test -s
 
 lint:
-	npx eslint .
+	npm run typecheck -s
+	npm run lint -s
+
+lint-fix:
+	npm run lint:fix
 
 publish:
 	npm publish --access public
+
+update-deps:
+	npx ncu -u
 
 .PHONY: test docs

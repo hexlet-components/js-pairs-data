@@ -1,12 +1,35 @@
 {
   "name": "@hexlet/pairs-data",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./index.js": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./index": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
   "type": "module",
   "scripts": {
-    "documentation": "documentation",
-    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "documentation": "documentation build src/index.ts -f md",
+    "test": "vitest run --pool=threads",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -18,15 +41,22 @@
     "url": "https://github.com/hexlet-components/js-pairs-data/issues"
   },
   "homepage": "https://github.com/hexlet-components/js-pairs-data#readme",
+  "engines": {
+    "node": ">=22.0"
+  },
   "dependencies": {
-    "@hexlet/pairs": "^1.1.1"
+    "@hexlet/pairs": "^2.0.1"
   },
   "devDependencies": {
-    "documentation": "^14.0.0",
-    "eslint": "^8.15.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^26.2.1",
-    "jest": "^28.1.0"
+    "@eslint/js": "^9.39.1",
+    "@stylistic/eslint-plugin": "^5.6.1",
+    "@vitest/eslint-plugin": "^1.5.2",
+    "documentation": "^14.0.3",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "npm-check-updates": "^19.1.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.49.0",
+    "vitest": "^4.0.15"
   }
 }
