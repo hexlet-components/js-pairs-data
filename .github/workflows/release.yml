@@ -22,5 +22,5 @@ jobs:
         run: make test
       - name: Publish
         run: |
-          npm config set //registry.npmjs.org/:_authToken ${{ secrets.npmjs_com }}
+          npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPMJS_COM }}
           make publish
