@@ -50,8 +50,8 @@
   "devDependencies": {
     "@biomejs/biome": "^2.2.4",
     "documentation": "^14.0.3",
-    "npm-check-updates": "^19.1.2",
-    "typescript": "^5.9.3",
+    "npm-check-updates": "^22.2.1",
+    "typescript": "^6.0.3",
     "vitest": "^4.0.15"
   }
 }
