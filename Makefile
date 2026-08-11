@@ -1,24 +1,25 @@
 install:
-	npm install
+	pnpm install
 
 docs:
 	mkdir -p docs
-	npm run documentation -s > docs/README.md
+	pnpm --silent run documentation > docs/README.md
 
 test:
-	npm test -s
+	pnpm --silent test
 
 lint:
-	npm run typecheck -s
-	npm run lint -s
+	pnpm --silent run typecheck
+	pnpm --silent run lint
+	pnpm --silent run format:check
 
 lint-fix:
-	npm run lint:fix
+	pnpm run lint:fix
 
 publish:
-	npm publish --access public
+	pnpm publish --access public --no-git-checks
 
 update-deps:
-	npx ncu -u
+	pnpm exec ncu -u
 
 .PHONY: test docs
