@@ -5,9 +5,9 @@ import {
   car as pairCar,
   cdr as pairCdr,
   toString as pairToString,
-} from '@hexlet/pairs';
+} from "@hexlet/pairs";
 
-import { getRandomIntInclusive } from './utils.js';
+import { getRandomIntInclusive } from "./utils.js";
 
 export type List<T = unknown> = Pair<T, unknown> | null;
 
@@ -15,19 +15,13 @@ const isNil = <T>(list: List<T>): list is null => list === null;
 
 const emptyList = <T>(): List<T> => null;
 
-type PrintablePrimitive =
-  | string
-  | number
-  | boolean
-  | bigint
-  | symbol
-  | undefined;
+type PrintablePrimitive = string | number | boolean | bigint | symbol | undefined;
 
 const formatNonList = (value: unknown): string => {
   if (isPair(value)) {
     return `pair: ${pairToString(value)}`;
   }
-  if (typeof value === 'object' && value !== null) {
+  if (typeof value === "object" && value !== null) {
     return JSON.stringify(value, null, 2);
   }
   return String(value as PrintablePrimitive);
@@ -60,7 +54,7 @@ export function checkList(value: unknown): asserts value is List<unknown> {
 
 const ensureNonEmpty = <T>(list: List<T>): Pair<T, unknown> => {
   if (isNil(list)) {
-    throw new Error('Operation requires non-empty list');
+    throw new Error("Operation requires non-empty list");
   }
   return list;
 };
@@ -83,9 +77,7 @@ export const cons = <T>(element: T, list: List<T>): List<T> => {
  * l(8, 10); // (8, 10)
  */
 export const l = <T>(...elements: T[]): List<T> =>
-  [...elements]
-    .reverse()
-    .reduce<List<T>>((acc, item) => cons(item, acc), emptyList<T>());
+  [...elements].reverse().reduce<List<T>>((acc, item) => cons(item, acc), emptyList<T>());
 
 /**
  * Get list's head
@@ -181,10 +173,7 @@ export const reverse = <T>(list: List<T>): List<T> => {
  * const numbers = l(3, 4, 5, 8);
  * filter(num => num % 2 === 0, numbers); // (4, 8)
  */
-export const filter = <T>(
-  callbackFn: (item: T) => boolean,
-  list: List<T>,
-): List<T> => {
+export const filter = <T>(callbackFn: (item: T) => boolean, list: List<T>): List<T> => {
   checkList(list);
   const iter = (items: List<T>, acc: List<T>): List<T> => {
     if (isNil(items)) {
@@ -223,10 +212,7 @@ export const disj = <T>(list: List<T>, element: T): List<T> =>
  * const numbers = l(3, 4, 5, 8);
  * map(num => num + 2, numbers); // (5, 6, 7, 10)
  */
-export const map = <T, U>(
-  callbackFn: (item: T) => U,
-  list: List<T>,
-): List<U> => {
+export const map = <T, U>(callbackFn: (item: T) => U, list: List<T>): List<U> => {
   checkList(list);
   const iter = (items: List<T>, acc: List<U>): List<U> => {
     if (isNil(items)) {
@@ -244,11 +230,7 @@ export const map = <T, U>(
  * const numbers = l(3, 4, 5, 8);
  * reduce((num, acc) => acc + 1, 0, numbers); // 4
  */
-export const reduce = <T, R>(
-  callbackFn: (item: T, acc: R) => R,
-  acc: R,
-  list: List<T>,
-): R => {
+export const reduce = <T, R>(callbackFn: (item: T, acc: R) => R, acc: R, list: List<T>): R => {
   checkList(list);
   const iter = (items: List<T>, result: R): R =>
     isNil(items) ? result : iter(tail(items), callbackFn(head(items), result));
@@ -312,7 +294,7 @@ export const random = <T>(list: List<T>): T => {
   checkList(list);
   const size = length(list);
   if (size === 0) {
-    throw new Error('Cannot get random element from empty list');
+    throw new Error("Cannot get random element from empty list");
   }
   const n = getRandomIntInclusive(0, size - 1);
   return get(n, list);
@@ -321,10 +303,7 @@ export const random = <T>(list: List<T>): T => {
 export const s = <T>(...elements: T[]): List<T> =>
   elements
     .reverse()
-    .reduce(
-      (acc, item) => (has(acc, item) ? acc : conj(acc, item)),
-      emptyList<T>(),
-    );
+    .reduce((acc, item) => (has(acc, item) ? acc : conj(acc, item)), emptyList<T>());
 
 /**
  * Convert list to string
@@ -338,7 +317,7 @@ export const toString = (value: unknown): string => {
   }
 
   if (isNil(value)) {
-    return '()';
+    return "()";
   }
 
   const rec = (node: List<unknown>): string => {
