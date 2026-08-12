@@ -2,6 +2,16 @@
 
 [![github action status](https://github.com/hexlet-components/js-pairs-data/workflows/Node%20CI/badge.svg)](https://github.com/hexlet-components/js-pairs-data/actions)
 
+## Зачем это нужно
+
+Список, собранный из пар: каждый элемент это пара «значение и остаток списка».
+Библиотека нужна курсам, где списки строятся поверх
+[@hexlet/pairs](https://github.com/hexlet-components/js-pairs), а не берутся
+готовыми из языка.
+
+На таком списке видно, откуда берутся `head` и `tail`, почему обход рекурсивен
+и во что обходится доступ к элементу по номеру.
+
 ## Install
 
 ```sh
