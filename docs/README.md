@@ -6,62 +6,62 @@
 
 ### Table of Contents
 
--   [isList][1]
-    -   [Parameters][2]
-    -   [Examples][3]
--   [cons][4]
-    -   [Parameters][5]
-    -   [Examples][6]
--   [l][7]
-    -   [Examples][8]
--   [head][9]
-    -   [Parameters][10]
-    -   [Examples][11]
--   [tail][12]
-    -   [Parameters][13]
-    -   [Examples][14]
--   [isEmpty][15]
-    -   [Parameters][16]
-    -   [Examples][17]
--   [isEqual][18]
-    -   [Parameters][19]
-    -   [Examples][20]
--   [has][21]
-    -   [Parameters][22]
-    -   [Examples][23]
--   [reverse][24]
-    -   [Parameters][25]
-    -   [Examples][26]
--   [filter][27]
-    -   [Parameters][28]
-    -   [Examples][29]
--   [conj][30]
-    -   [Parameters][31]
-    -   [Examples][32]
--   [disj][33]
-    -   [Parameters][34]
-    -   [Examples][35]
--   [map][36]
-    -   [Parameters][37]
-    -   [Examples][38]
--   [reduce][39]
-    -   [Parameters][40]
-    -   [Examples][41]
--   [concat][42]
-    -   [Parameters][43]
-    -   [Examples][44]
--   [length][45]
-    -   [Parameters][46]
-    -   [Examples][47]
--   [get][48]
-    -   [Parameters][49]
-    -   [Examples][50]
--   [random][51]
-    -   [Parameters][52]
-    -   [Examples][53]
--   [toString][54]
-    -   [Parameters][55]
-    -   [Examples][56]
+- [isList][1]
+    - [Parameters][2]
+    - [Examples][3]
+- [cons][4]
+    - [Parameters][5]
+    - [Examples][6]
+- [l][7]
+    - [Examples][8]
+- [head][9]
+    - [Parameters][10]
+    - [Examples][11]
+- [tail][12]
+    - [Parameters][13]
+    - [Examples][14]
+- [isEmpty][15]
+    - [Parameters][16]
+    - [Examples][17]
+- [isEqual][18]
+    - [Parameters][19]
+    - [Examples][20]
+- [has][21]
+    - [Parameters][22]
+    - [Examples][23]
+- [reverse][24]
+    - [Parameters][25]
+    - [Examples][26]
+- [filter][27]
+    - [Parameters][28]
+    - [Examples][29]
+- [conj][30]
+    - [Parameters][31]
+    - [Examples][32]
+- [disj][33]
+    - [Parameters][34]
+    - [Examples][35]
+- [map][36]
+    - [Parameters][37]
+    - [Examples][38]
+- [reduce][39]
+    - [Parameters][40]
+    - [Examples][41]
+- [concat][42]
+    - [Parameters][43]
+    - [Examples][44]
+- [length][45]
+    - [Parameters][46]
+    - [Examples][47]
+- [get][48]
+    - [Parameters][49]
+    - [Examples][50]
+- [random][51]
+    - [Parameters][52]
+    - [Examples][53]
+- [toString][54]
+    - [Parameters][55]
+    - [Examples][56]
 
 ## isList
 
@@ -69,7 +69,7 @@ Check if argument is list
 
 ### Parameters
 
--   `mix`  
+- `mix`  
 
 ### Examples
 
@@ -86,8 +86,8 @@ Add element to list
 
 ### Parameters
 
--   `element`  
--   `list`  
+- `element`  
+- `list`  
 
 ### Examples
 
@@ -112,7 +112,7 @@ Get list's head
 
 ### Parameters
 
--   `list`  
+- `list`  
 
 ### Examples
 
@@ -126,7 +126,7 @@ Get list's tail
 
 ### Parameters
 
--   `list`  
+- `list`  
 
 ### Examples
 
@@ -140,7 +140,7 @@ Check if list is empty
 
 ### Parameters
 
--   `list`  
+- `list`  
 
 ### Examples
 
@@ -156,8 +156,8 @@ Compare 2 lists
 
 ### Parameters
 
--   `list1`  
--   `list2`  
+- `list1`  
+- `list2`  
 
 ### Examples
 
@@ -173,8 +173,8 @@ Check if list has some element
 
 ### Parameters
 
--   `list`  
--   `element`  
+- `list`  
+- `element`  
 
 ### Examples
 
@@ -192,7 +192,7 @@ Reverse list
 
 ### Parameters
 
--   `list`  
+- `list`  
 
 ### Examples
 
@@ -207,8 +207,8 @@ Filter list
 
 ### Parameters
 
--   `callbackFn`  
--   `list`  
+- `callbackFn`  
+- `list`  
 
 ### Examples
 
@@ -223,8 +223,8 @@ Conj
 
 ### Parameters
 
--   `list`  
--   `element`  
+- `list`  
+- `element`  
 
 ### Examples
 
@@ -240,8 +240,8 @@ Disj
 
 ### Parameters
 
--   `list`  
--   `element`  
+- `list`  
+- `element`  
 
 ### Examples
 
@@ -256,8 +256,8 @@ Map list
 
 ### Parameters
 
--   `callbackFn`  
--   `list`  
+- `callbackFn`  
+- `list`  
 
 ### Examples
 
@@ -272,9 +272,9 @@ Reduce list
 
 ### Parameters
 
--   `callbackFn`  
--   `acc`  
--   `list`  
+- `callbackFn`  
+- `acc`  
+- `list`  
 
 ### Examples
 
@@ -289,8 +289,8 @@ Join 2 lists
 
 ### Parameters
 
--   `list1`  
--   `list2`  
+- `list1`  
+- `list2`  
 
 ### Examples
 
@@ -308,7 +308,7 @@ List's length
 
 ### Parameters
 
--   `list`  
+- `list`  
 
 ### Examples
 
@@ -323,8 +323,8 @@ Get element from list by index
 
 ### Parameters
 
--   `index`  
--   `list`  
+- `index`  
+- `list`  
 
 ### Examples
 
@@ -341,7 +341,7 @@ Get random element from list
 
 ### Parameters
 
--   `list`  
+- `list`  
 
 ### Examples
 
@@ -356,7 +356,7 @@ Convert list to string
 
 ### Parameters
 
--   `list`  
+- `list`  
 
 ### Examples
 
